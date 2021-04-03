@@ -1,0 +1,6 @@
+#!/usr/bin/with-contenv bashio
+
+export NODE_PATH=/app/node_modules
+cd /app || bashio::exit.nok "Could not change directory to /app"
+bashio::log.info "Handing over control to Orvibo2mqtt Core ..."
+exec npm start
