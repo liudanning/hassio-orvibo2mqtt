@@ -32,5 +32,6 @@
   },
   "schema": {
     "config_path": "str"
-  }
+  },
+  "init": false
 }
