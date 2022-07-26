@@ -4,9 +4,8 @@ FROM $BUILD_FROM
 ENV LANG C.UTF-8
 ARG BUILD_VERSION
 
-RUN apk add --no-cache --virtual .build-dependencies \
-    make gcc g++ linux-headers udev git && \
-    apk add --no-cache jq nodejs-npm
+RUN apk add --no-cache --virtual .build-dependencies make gcc g++ linux-headers udev git && \
+    apk add --no-cache nodejs npm
 
 RUN echo "Installing ..." && \
     curl -sL -o "/app.tar.gz" \
@@ -17,12 +16,7 @@ RUN echo "Installing ..." && \
 # COPY app /app
 
 RUN cd /app && \
-    npm i \
-    --no-audit \
-    --no-optional \
-    --no-update-notifier \
-    --only=production \
-    --unsafe-perm && \
+    npm ci --no-audit --no-optional --no-update-notifier --only=production --unsafe-perm && \
     apk del --no-cache --purge .build-dependencies && \
     rm -rf /root/.cache /root/.npm
 

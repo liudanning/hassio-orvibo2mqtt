@@ -1,6 +1,6 @@
 {
   "name": "Orvibo2mqtt",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "slug": "orvibo2mqtt",
   "description": "Orvibo2mqtt add-on",
   "uart": true,
